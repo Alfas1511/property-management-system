@@ -74,6 +74,7 @@
     <!--end::App Wrapper-->
     <!--begin::Script-->
     @include('admin.layouts.scripts')
+    @stack('scripts')
 </body>
 <!--end::Body-->
 

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\Auth\Login\LoginController;
 use App\Http\Controllers\Admin\Auth\Register\RegisterController;
+use App\Http\Controllers\Admin\PropertyManagement\OptionTypeController;
 use App\Http\Controllers\Admin\PropertyManagement\PropertyController;
+use App\Http\Controllers\Admin\PropertyManagement\PropertyTypeController;
 use App\Http\Controllers\Admin\UserManagement\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,3 +29,7 @@ Route::resource('user', UserController::class);
 
 // Property Management Endpoints
 Route::resource('property', PropertyController::class);
+Route::delete('/property/image/{id}', [PropertyController::class, 'deleteImage'])
+    ->name('property.image.delete');
+Route::resource('property-type', PropertyTypeController::class);
+Route::resource('option-type', OptionTypeController::class);
