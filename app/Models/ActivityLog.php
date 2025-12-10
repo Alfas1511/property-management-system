@@ -3,20 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class UserRole extends Model
+class ActivityLog extends Model
 {
-    protected $table = 'user_roles';
+    protected $table = 'activity_logs';
     protected $primaryKey = 'id';
     protected $guarded = [];
 
-    public function user()
+    public function createdBy()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
     }
 }

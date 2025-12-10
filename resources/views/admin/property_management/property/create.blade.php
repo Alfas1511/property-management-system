@@ -1,5 +1,26 @@
 @extends('admin.layouts.mainapp')
 @section('content')
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    @foreach (['success', 'error', 'warning', 'info'] as $msg)
+        @if (session($msg))
+            <div class="alert alert-{{ $msg }}">
+                {{ session($msg) }}
+            </div>
+        @endif
+    @endforeach
+
     <main class="app-main">
         <!--begin::App Content Header-->
         <div class="app-content-header">

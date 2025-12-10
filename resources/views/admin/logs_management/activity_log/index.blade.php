@@ -1,26 +1,5 @@
 @extends('admin.layouts.mainapp')
 @section('content')
-
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-
-    @foreach (['success', 'error', 'warning', 'info'] as $msg)
-        @if (session($msg))
-            <div class="alert alert-{{ $msg }}">
-                {{ session($msg) }}
-            </div>
-        @endif
-    @endforeach
-
     <main class="app-main">
         <!--begin::App Content Header-->
         <div class="app-content-header">
@@ -29,12 +8,12 @@
                 <!--begin::Row-->
                 <div class="row">
                     <div class="col-sm-6">
-                        <h3 class="mb-0">Property Listing</h3>
+                        <h3 class="mb-0">Activity Logs</h3>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Property Listing</li>
+                            <li class="breadcrumb-item active" aria-current="page">Activity Logs</li>
                         </ol>
                     </div>
                 </div>
@@ -53,10 +32,7 @@
                         <div class="card mb-12">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <div>
-                                    <h3 class="card-title">Property Table</h3>
-                                </div>
-                                <div class="ms-auto">
-                                    <a class="btn btn-primary" href="{{ route('property.create') }}">Add Property</a>
+                                    <h3 class="card-title">Activity Logs</h3>
                                 </div>
                             </div>
                             <!-- /.card-header -->
@@ -66,28 +42,19 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Title</th>
-                                            <th>Type</th>
-                                            <th>Option Type</th>
-                                            <th>Area</th>
-                                            <th>Rate</th>
-                                            <th>Actions</th>
+                                            <th>Description</th>
+                                            <th>Created By</th>
+                                            <th>Created At</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($properties as $property)
+                                        @foreach ($activityLogs as $activityLog)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $property->property_title }}</td>
-                                                <td>{{ $property->propertyType->property_type }}</td>
-                                                <td>{{ $property->optionType->option_type }}</td>
-                                                <td>{{ $property->property_area }}</td>
-                                                <td>₹{{ number_format($property->rate, 2) }}</td>
-                                                <td>
-                                                    <a href="{{ route('property.show', $property->id) }}"
-                                                        class="btn btn-info btn-sm">View</a>
-                                                    <a href="{{ route('property.edit', $property->id) }}"
-                                                        class="btn btn-dark btn-sm">Edit </a>
-                                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                                <td>{{ $activityLog->title }}</td>
+                                                <td>{{ $activityLog->description }}</td>
+                                                <td>{{ $activityLog->createdBy->name ?? 'System' }}</td>
+                                                <td>{{ Carbon\Carbon::parse($activityLog->created_at)->format('d/m/Y -  h:i:s A') }}
                                                 </td>
                                             </tr>
                                         @endforeach

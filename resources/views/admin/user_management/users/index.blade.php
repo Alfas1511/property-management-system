@@ -1,5 +1,17 @@
 @extends('admin.layouts.mainapp')
 @section('content')
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <main class="app-main">
         <!--begin::App Content Header-->
         <div class="app-content-header">
@@ -57,7 +69,13 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>{{ $user->userRoles->name }}</td>
+                                                <td>
+                                                    <ul>
+                                                        @foreach ($user->userRoles as $roles)
+                                                            <li>{{ $roles->role->name }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                </td>
                                                 <td></td>
                                                 <td>
                                                     <a href="{{ route('user.show', $user->id) }}"
