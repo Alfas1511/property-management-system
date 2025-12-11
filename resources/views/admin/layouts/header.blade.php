@@ -148,7 +148,7 @@
                         <img src="{{ asset('assets/admin/assets/img/user2-160x160.jpg') }}"
                             class="rounded-circle shadow" alt="User Image" />
                         <p>
-                            {{ Auth::user()->name }} - {{ Auth::user()->userRoles->first()->role->name }}
+                            {{ Auth::user()->name }} - {{ Auth::user()->userRole->role->name }}
                             <small>Member since
                                 {{ Carbon\Carbon::parse(Auth::user()->created_at)->format('d-M-Y') }}</small>
                         </p>

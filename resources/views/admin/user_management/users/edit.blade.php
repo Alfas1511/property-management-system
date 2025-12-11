@@ -44,45 +44,36 @@
                             <div class="row g-3">
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom01" class="form-label">Name</label>
+                                    <label for="validationCustom01" class="form-label">Name <span
+                                            class="text-danger">*</span></label>
                                     <input name="name" type="text" class="form-control" id="validationCustom01"
-                                        value="{{ $user->name }}" required />
+                                        value="{{ $user->name }}" />
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom02" class="form-label">Email</label>
+                                    <label for="validationCustom02" class="form-label">Email <span
+                                            class="text-danger">*</span></label>
                                     <input name="email" type="email" class="form-control" id="validationCustom02"
-                                        value="{{ $user->email }}" required />
+                                        value="{{ $user->email }}" />
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom03" class="form-label">Password</label>
-                                    <input name="password" type="password" class="form-control" id="validationCustom03"
-                                        required />
+                                    <label for="validationCustom03" class="form-label">Password <span
+                                            class="text-danger">*</span></label>
+                                    <input name="password" type="password" class="form-control" id="validationCustom03" />
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Option Type</label>
-                                    <select name="roles[]" class="form-select" id="validationCustom04" required multiple>
-                                        <option disabled value="">Choose...</option>
+                                    <label for="validationCustom04" class="form-label">Role Type <span
+                                            class="text-danger">*</span></label>
+                                    <select name="roles" class="form-select" id="validationCustom04">
+                                        <option value="">Choose...</option>
                                         @foreach ($roles as $role)
-                                            @foreach ($user->userRoles as $userRole)
-                                                <option value="{{ $role->id }}"
-                                                    @if ($userRole->role_id == $role->id) selected @endif>{{ $role->name }}
-                                                </option>
-                                            @endforeach
+                                            <option value="{{ $role->id }}"
+                                                @if ($user->userRole->id == $role->id) selected @endif>{{ $role->name }}
+                                            </option>
                                         @endforeach
                                     </select>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
-                                            required />
-                                        <label class="form-check-label" for="invalidCheck">
-                                            Agree to terms and conditions
-                                        </label>
-                                    </div>
                                 </div>
                             </div>
                             <!--end::Row-->

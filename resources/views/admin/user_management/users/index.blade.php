@@ -59,7 +59,6 @@
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>User Type</th>
-                                            <th>Requests</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -69,14 +68,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
-                                                <td>
-                                                    <ul>
-                                                        @foreach ($user->userRoles as $roles)
-                                                            <li>{{ $roles->role->name }}</li>
-                                                        @endforeach
-                                                    </ul>
-                                                </td>
-                                                <td></td>
+                                                <td>{{ $user->userRole->role->name }}</td>
                                                 <td>
                                                     <a href="{{ route('user.show', $user->id) }}"
                                                         class="btn btn-info btn-sm">View</a>

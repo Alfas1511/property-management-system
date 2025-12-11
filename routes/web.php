@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PropertyManagement\OptionTypeController;
 use App\Http\Controllers\Admin\PropertyManagement\PropertyController;
 use App\Http\Controllers\Admin\PropertyManagement\PropertyTypeController;
 use App\Http\Controllers\Admin\UserManagement\UserController;
+use App\Http\Controllers\Admin\UserManagement\UserConvertRequestController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('tables', function () {
@@ -36,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
 
     // User Management Endpoints
     Route::resource('user', UserController::class);
-
+   
     // Property Management Endpoints
     Route::resource('property', PropertyController::class);
     Route::delete('/property/image/{id}', [PropertyController::class, 'deleteImage'])->name('property.image.delete');

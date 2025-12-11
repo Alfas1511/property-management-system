@@ -12,13 +12,6 @@
         </div>
     @endif
 
-    @foreach (['success', 'error', 'warning', 'info'] as $msg)
-        @if (session($msg))
-            <div class="alert alert-{{ $msg }}">
-                {{ session($msg) }}
-            </div>
-        @endif
-    @endforeach
 
     <main class="app-main">
         <!--begin::App Content Header-->
@@ -52,7 +45,7 @@
                 <div class="card card-info card-outline mb-4">
                     <!--begin::Header-->
                     <div class="card-header">
-                        <div class="card-title">Create User</div>
+                        <div class="card-title">Basic Details</div>
                     </div>
                     <!--end::Header-->
                     <!--begin::Form-->
@@ -64,42 +57,60 @@
                             <div class="row g-3">
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom01" class="form-label">Name</label>
+                                    <label for="validationCustom01" class="form-label">Name <span
+                                            class="text-danger">*</span></label>
                                     <input name="name" type="text" class="form-control" id="validationCustom01"
-                                        required />
+                                        value="{{ old('name') }}" />
+                                    @error('name')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom02" class="form-label">Email</label>
+                                    <label for="validationCustom02" class="form-label">Email <span
+                                            class="text-danger">*</span></label>
                                     <input name="email" type="email" class="form-control" id="validationCustom02"
-                                        required />
+                                        value="{{ old('email') }}" />
+                                    @error('email')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom03" class="form-label">Password</label>
-                                    <input name="password" type="password" class="form-control" id="validationCustom03"
-                                        required />
+                                    <label for="validationCustom03" class="form-label">Password <span
+                                            class="text-danger">*</span></label>
+                                    <input name="password" type="password" class="form-control" id="validationCustom03" />
+                                    @error('password')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-md-6">
-                                    <label for="validationCustom04" class="form-label">Option Type</label>
-                                    <select name="roles[]" class="form-select" id="validationCustom04" required multiple>
-                                        <option disabled value="">Choose...</option>
+                                    <label for="validationCustom04" class="form-label">Role Type <span
+                                            class="text-danger">*</span></label>
+                                    <select name="roles" class="form-select" id="validationCustom04">
+                                        <option value="">Choose...</option>
                                         @foreach ($roles as $role)
                                             <option value="{{ $role->id }}">{{ $role->name }}
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error('roles')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="col-12">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
-                                            required />
+                                        <input class="form-check-input" type="checkbox" id="invalidCheck" name="terms"
+                                            value="1">
                                         <label class="form-check-label" for="invalidCheck">
-                                            Agree to terms and conditions
+                                            Agree to terms and conditions <span class="text-danger">*</span>
                                         </label>
                                     </div>
+                                    @error('terms')
+                                        <div class="text-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <!--end::Row-->

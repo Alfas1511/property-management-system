@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_details', function (Blueprint $table) {
+        Schema::create('user_bank_accounts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string("blood_group");
-            $table->date("date_of_birth");
-            $table->foreignId("gender_id")->constrained('genders')->onDelete('cascade');
-            $table->string("primary_mobile_number");
-            $table->string("alternate_mobile_number")->nullable();
+            $table->foreignId('account_type_id')->constrained();
+            $table->string('bank_name');
+            $table->string('account_number');
+            $table->integer('ifsc_code');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_details');
+        Schema::dropIfExists('user_bank_accounts');
     }
 };

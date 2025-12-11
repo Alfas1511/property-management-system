@@ -22,13 +22,14 @@
                 aria-label="Main navigation" data-accordion="false" id="navigation">
 
                 <li class="nav-item">
-                    <a href="{{ route('dashboard') }}" class="nav-link active">
+                    <a href="{{ route('dashboard') }}"
+                        class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-speedometer"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
 
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-table"></i>
                         <p>
@@ -61,9 +62,9 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
 
-                <li class="nav-item">
+                <li class="nav-item {{ request()->routeIs('user.*') ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-pencil-square"></i>
                         <p>
@@ -73,7 +74,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('user.index') }}" class="nav-link">
+                            <a href="{{ route('user.index') }}"
+                                class="nav-link {{ request()->routeIs('user.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>User</p>
                             </a>
@@ -81,7 +83,12 @@
                     </ul>
                 </li>
 
-                <li class="nav-item">
+                <li
+                    class="nav-item {{ request()->routeIs('property.*') ||
+                    request()->routeIs('property-type.*') ||
+                    request()->routeIs('option-type.*')
+                        ? 'menu-open'
+                        : '' }}">
                     <a href="#" class="nav-link">
                         <i class="nav-icon bi bi-pencil-square"></i>
                         <p>
@@ -91,7 +98,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('property.index') }}" class="nav-link">
+                            <a href="{{ route('property.index') }}"
+                                class="nav-link {{ request()->routeIs('property.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Property</p>
                             </a>
@@ -100,7 +108,8 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('property-type.index') }}" class="nav-link">
+                            <a href="{{ route('property-type.index') }}"
+                                class="nav-link {{ request()->routeIs('property-type.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Property Types</p>
                             </a>
@@ -109,7 +118,8 @@
 
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{ route('option-type.index') }}" class="nav-link">
+                            <a href="{{ route('option-type.index') }}"
+                                class="nav-link {{ request()->routeIs('option-type.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Option Types</p>
                             </a>
@@ -118,7 +128,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="{{ route('activity-log.index') }}" class="nav-link active">
+                    <a href="{{ route('activity-log.index') }}"
+                        class="nav-link {{ request()->routeIs('activity-log.*') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-speedometer"></i>
                         <p>Activity Logs</p>
                     </a>

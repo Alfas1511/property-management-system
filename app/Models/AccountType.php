@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserConvertRequest extends Model
+class AccountType extends Model
 {
-    protected $table = 'user_convert_requests';
+    protected $table = 'account_types';
     protected $primaryKey = 'id';
     protected $guarded = [];
 }

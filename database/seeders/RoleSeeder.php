@@ -24,7 +24,7 @@ class RoleSeeder extends Seeder
                 ],
                 [
                     'id' => 2,
-                    'name' => 'Client',
+                    'name' => 'Vendor',
                     'created_at' => now()
                 ],
                 [

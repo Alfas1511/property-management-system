@@ -43,8 +43,18 @@ class User extends Authenticatable
         ];
     }
 
-    public function userRoles()
+    public function userRole()
     {
-        return $this->hasMany(UserRole::class);
+        return $this->hasOne(UserRole::class);
+    }
+
+    public function userAddresses()
+    {
+        return $this->hasMany(UserAddress::class);
+    }
+
+    public function userBankAccounts()
+    {
+        return $this->hasMany(UserBankAccount::class);
     }
 }
