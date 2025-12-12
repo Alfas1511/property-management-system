@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('user_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
-            $table->string("blood_group");
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId("blood_group_id")->constrained('blood_groups');
             $table->date("date_of_birth");
             $table->foreignId("gender_id")->constrained('genders')->onDelete('cascade');
             $table->string("primary_mobile_number");

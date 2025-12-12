@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
                 IdentityTypeSeeder::class,
                 StatesAndDistrictsSeeder::class,
                 AccountTypeSeeder::class,
-                AddressTypeSeeder::class
+                AddressTypeSeeder::class,
+                BloodGroupSeeder::class
             ]
         );
     }

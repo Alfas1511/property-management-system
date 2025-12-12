@@ -37,7 +37,6 @@ Route::middleware(['auth'])->group(function () {
 
     // User Management Endpoints
     Route::resource('user', UserController::class);
-   
     // Property Management Endpoints
     Route::resource('property', PropertyController::class);
     Route::delete('/property/image/{id}', [PropertyController::class, 'deleteImage'])->name('property.image.delete');

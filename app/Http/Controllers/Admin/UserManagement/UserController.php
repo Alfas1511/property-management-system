@@ -7,6 +7,7 @@ use App\Http\Actions\UserManagement\UserUpdateAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserManagement\UserStoreRequest;
 use App\Http\Requests\Admin\UserManagement\UserUpdateRequest;
+use App\Models\BloodGroup;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -49,7 +50,8 @@ class UserController extends Controller
     {
         $user->load(['userRole']);
         $roles = Role::whereNot('id', 1)->where('status', 'Active')->get();
-        return view('admin.user_management.users.edit', compact('user', 'roles'));
+        $bloodGroups = BloodGroup::where('status', 'Active')->get();
+        return view('admin.user_management.users.edit', compact('user', 'roles', 'bloodGroups'));
     }
 
     public function update(UserUpdateRequest $request, UserUpdateAction $action, User $user)

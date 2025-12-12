@@ -12,10 +12,14 @@ class UserUpdateAction
     {
         try {
             DB::beginTransaction();
-            $user->name = $data['name'] ?? "";
-            $user->email = $data['email'] ?? "";
-            $user->password = Hash::make($data['password']);
-            $user->save();
+            if ($data['form_number'] == 1) {
+                $user->name = $data['name'] ?? "";
+                $user->email = $data['email'] ?? "";
+                $user->password = Hash::make($data['password']);
+                $user->save();
+            } elseif ($data['form_number'] == 2) {
+                
+            }
 
             DB::commit();
             return true;
