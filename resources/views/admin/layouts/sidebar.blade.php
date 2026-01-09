@@ -128,6 +128,14 @@
                 </li>
 
                 <li class="nav-item">
+                    <a href="{{ route('payments.index') }}"
+                        class="nav-link {{ request()->routeIs('payments.*') ? 'active' : '' }}">
+                        <i class="nav-icon bi bi-speedometer"></i>
+                        <p>Payments</p>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a href="{{ route('activity-log.index') }}"
                         class="nav-link {{ request()->routeIs('activity-log.*') ? 'active' : '' }}">
                         <i class="nav-icon bi bi-speedometer"></i>

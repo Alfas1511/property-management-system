@@ -4,6 +4,7 @@ use App\Http\Controllers\ActivityLog\ActivityLogController;
 use App\Http\Controllers\Admin\Auth\Login\LoginController;
 use App\Http\Controllers\Admin\Auth\Register\RegisterController;
 use App\Http\Controllers\Admin\Dashboard\DashboardController;
+use App\Http\Controllers\Admin\Payments\PaymentsController;
 use App\Http\Controllers\Admin\PropertyManagement\OptionTypeController;
 use App\Http\Controllers\Admin\PropertyManagement\PropertyController;
 use App\Http\Controllers\Admin\PropertyManagement\PropertyTypeController;
@@ -42,4 +43,5 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/property/image/{id}', [PropertyController::class, 'deleteImage'])->name('property.image.delete');
     Route::resource('property-type', PropertyTypeController::class);
     Route::resource('option-type', OptionTypeController::class);
+    Route::resource('payments', PaymentsController::class);
 });
